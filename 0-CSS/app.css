@@ -1,0 +1,79 @@
+.board {
+  margin: 0 auto;
+  width: 90%;
+}
+
+.column {
+  display: flex;
+  flex-flow: column wrap;
+  min-width: 200px;
+  flex: 1;
+  margin: 10px 20px;
+  border: 2px solid black;
+  padding: 15px;
+  position: relative;
+  background: #fff7f7;
+}
+
+.column-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.column > .btn {
+  position: absolute;
+  align-self: center;
+  padding: 10px;
+  border-radius: 0 0 0 20px;
+  right: 0;
+  top: 0;
+}
+
+.select-wrapper {
+  display: flex;
+}
+
+.select__add {
+  border-radius: 5px 0 0 5px;
+  border: none;
+  padding: 10px;
+}
+
+.card {
+  display: flex;
+  border: 2px solid red;
+  background: white;
+  margin-top: 10px;
+}
+
+.card-list {
+  width: 100%;
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.card .btn {
+  margin-left: auto;
+  width: 30px;
+}
+
+.btn {
+  border: none;
+  cursor: pointer;
+}
+
+.btn-add {
+  background: green;
+}
+
+.btn-delete {
+  background: red;
+}
+
+iframe body {
+  margin: 200px;
+}
+
+/*# sourceMappingURL=app.css.map */

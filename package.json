@@ -18,8 +18,8 @@
     "build:autoprefixer": "autoprefixer-cli 0-CSS/app.css",
     "build-dev:sass": "node-sass --output-style expanded --source-map true -o 0-CSS 1-SASS",
     "watch": "npm-run-all -p watch:*",
-    "watch:sass": "node-sass --output-style expanded --source-map true -o 0-CSS/app.css 1-SASS/app.sass --watch",
-    "watch:browser-sync": "browser-sync start --server --files 0-CSS/app.css/app.css *.html"
+    "watch:sass": "node-sass --output-style expanded --source-map true -o 0-CSS 1-SASS/app.sass --watch",
+    "watch:browser-sync": "browser-sync start --server --files 0-CSS/app.css index.html"
   },
   "keywords": [],
   "author": "",

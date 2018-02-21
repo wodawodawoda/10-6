@@ -20,10 +20,14 @@ function Column(name) {
 	function createColumn() {
 		// Create column elements
 		var $column = $('<div>').addClass('column');
-		var $columnTitle = $('<h2>').addClass('column-title').text(self.name);
-		var $columnCardList = $('<ul>').addClass('column-card-list');
-		var $columnDelete = $('<button>').addClass('btn-delete').text('x');
-		var $columnAddCard = $('<button>').addClass('add-card').text('Add a card');
+		var $columnHeader = $('<div>').addClass('column__header');
+		var $columnTitle = $('<h2>').addClass('title').text(self.name);
+		var $columnCardList = $('<ul>').addClass('card-list');
+		var $columnDelete = $('<button>').addClass('btn btn-delete').text('Delete column');
+		var $columnAddCard = $('<button>').addClass('btn btn-add').text('+');
+		var $columnForm = $('<div>').addClass('select-wrapper');
+		var $columnSelect = $('<select>').addClass('select select__add');
+		var $columnOption = $('<option>').addClass('select__option');
 
 		// Watch column creation buttons
 		$columnDelete.click(function() {
@@ -34,10 +38,15 @@ function Column(name) {
 		});
 
 		// Append column
+		$columnSelect.append($columnOption.text('High priority'))
+			.append($columnOption.clone().text('Normal priority'))
+			.append($columnOption.clone().text('Low priority'));
+		$columnForm.append($columnSelect).append($columnAddCard);
 		$column.append($columnTitle)
 			.append($columnDelete)
-			.append($columnAddCard)
+			.append($columnForm)
 			.append($columnCardList);
+
 		return $column;
 	}
 }
@@ -61,15 +70,15 @@ function Card(description) {
 
 	function createCard(name) {
 		var $card = $('<li>').addClass('card');
-		var $cardDescription = $('<p>').addClass('card-description').text(self.description);
-		var $cardDelete = $('<button>').addClass('btn-delete').text('x');
+		var $cardDescription = $('<p>').addClass('card__description').text(self.description);
+		var $cardDelete = $('<button>').addClass('btn btn-delete').text('x');
 
 		$cardDelete.click(function() {
 			self.removeCard();
 		});
 
-		$card.append($cardDelete)
-			.append($cardDescription);
+		$card.append($cardDescription)
+			.append($cardDelete);
 		return $card;
 	}
 }
@@ -92,9 +101,9 @@ var board = {
 };
 
 function initSortable() {
-	$('.column-card-list').sortable({
-		connectWith: '.column-card-list',
-		placeholder: 'card-placeholder'
+	$('.card-list').sortable({
+		connectWith: '.card-list',
+		placeholder: 'card__placeholder'
 	}).disableSelection();
 }
 
