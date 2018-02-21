@@ -1,13 +1,42 @@
+body
+	background: -webkit-linear-gradient(#add8e6, #fff)
+	background: -o-linear-gradient(#add8e6, #fff)
+	background: linear-gradient(#add8e6, #fff)
+	background-repeat: no-repeat
+	display: flex
+	flex-flow: column nowrap
+
 .board
-	margin: 0 auto
+	border: 20px solid rgba(0,0,50,0.5)
+	border-radius: 50px
+	margin: 40px auto 0
 	width: 90%
+	max-width: 1200px
+	position: relative
+	+m(create)
+		padding: 25px 0
+	+e(delete)
+		position: absolute
+		top: -35px
+		right: -35px
+		font-size: 40px
+		width: 60px
+		line-height: 60px
+		border-radius: 50%
+	+e(header)
+		padding-left: 3%
+		+e(button)
+			padding: 15px
+			margin-bottom: 20px
 .column
 	display: flex
-	flex-flow: column wrap
-	min-width: 200px
+	flex-flow: column nowrap
+	min-width: 220px
+	max-width: 400px
 	flex: 1
 	margin: 10px 20px
 	border: 2px solid black
+	border-radius: 20px 20px 0 0
 	padding: 15px
 	position: relative
 	background: #fff7f7
@@ -15,37 +44,56 @@
 		display: flex
 		flex-wrap: wrap
 		justify-content: space-around
-	&>.btn
+		align-items: flex-start
+	&>.btn-delete
 		position: absolute
 		align-self: center
 		padding: 10px
-		border-radius: 0 0 0 20px
-		right: 0
-		top: 0
-		
+		border-radius: 0 10px 0 20px
+		right: -6px
+		top: -6px
 
 .select
+	-webkit-appearance: none
+	-moz-appearance: none
+	appearance: none
+	background: grey url(https://d30y9cdsu7xlg0.cloudfront.net/png/242277-200.png) center no-repeat
+	background-size: 10%
+	background-position: 95% center
 	+m(wrapper)
 		display: flex
 	+e(add)
-		border-radius: 5px 0 0 5px
+		border-radius: 10px 0 0
 		border: none
-		padding: 10px
+		padding: 10px 30px 10px 10px
 
 .card
 	display: flex
-	border: 2px solid red
-	background: white
-	margin-top: 10px
+	margin-bottom: 10px
 	+m(list)
+		border: 2px dashed black
 		width: 100%
+		min-height: 40px;
 		list-style-type: none
-		padding: 0
+		padding: 20px 0
 		margin: 10px 0
+	+e(description)
+		width: 100%
+		margin: 0
+		padding: 15px 10px
+		z-index: 1
+		&:hover ~ .btn
+			left: 0
 	.btn
+		border-left: 2px dashed black
 		margin-left: auto
+		position: relative
 		width: 30px
-
+		left: -30px
+		transition: 0.5s
+		z-index: 0
+		&:hover
+			left: 0
 
 .btn
 	border: none
@@ -54,8 +102,3 @@
 		background: green
 	+m(delete)
 		background: red
-		// margin-left: auto
-
-iframe
-	body
-		margin: 200px
