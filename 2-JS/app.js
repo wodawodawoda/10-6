@@ -46,8 +46,10 @@ function Column(name) {
 		$columnForm
 			.append($columnSelect)
 			.append($columnAddCard);
+		$columnHeader
+			.append($columnTitle);
 		$column
-			.append($columnTitle)
+			.append($columnHeader)
 			.append($columnDelete)
 			.append($columnForm)
 			.append($columnCardList);
@@ -60,7 +62,7 @@ Column.prototype = {
 	addCard: function(card) {
 		var selectValue = this.$element.children('.select-wrapper').children('select').val();
 		this.$element.children('ul').append(card.$element);
-		this.$element.children('ul').children('li').children('p').last().css('background', selectValue)
+		this.$element.children('ul').children('li').children('p').last().css('background', selectValue);
 	},
 	removeColumn: function() {
 		var self = this;
@@ -79,7 +81,7 @@ function Card(description) {
 	this.$element = createCard();
 
 	function createCard(name) {
-		var $card = $('<li>').addClass('card')
+		var $card = $('<li>').addClass('card');
 		var $cardDescription = $('<p>').addClass('card__description').text(self.description);
 		var $cardDelete = $('<button>').addClass('btn btn-delete').text('x');
 
@@ -121,8 +123,8 @@ function Board(title) {
 		var $boardHeader = $('<div>').addClass('board__header');
 		var $boardTitle = $('<h1>').text(self.title);
 		var $boardDelete = $('<button>').addClass('board__delete btn btn-delete').text('x');
-		var $boardAddColumn = $('<button>').addClass('board__header__button btn btn-add create-column').text('Add a column')
-		var $boardColumnContainer = $('<div>').addClass('column-container')
+		var $boardAddColumn = $('<button>').addClass('board__header__button btn btn-add create-column').text('Add a column');
+		var $boardColumnContainer = $('<div>').addClass('column-container');
 
 		$boardDelete.click(function() {
 			self.removeBoard();
@@ -144,7 +146,7 @@ function Board(title) {
 
 Board.prototype = {
 	removeBoard: function() {
-		let self = this
+		let self = this;
 		this.$element.hide(500, 'linear',function(){ self.$element.remove(); });
 	},
 	addColumn: function(column) {
@@ -175,9 +177,9 @@ const starter = new Board('New kanban');
 const todoColumn = new Column('To do');
 const doingColumn = new Column('Doing');
 const doneColumn = new Column('Done');
-const card1 = new Card('Fix colors')
-const card2 = new Card('Fix append animations')
-const card3 = new Card('Fix initSortable bug')
+const card1 = new Card('Fix colors');
+const card2 = new Card('Fix append animations');
+const card3 = new Card('Fix initSortable bug');
 todoColumn.addCard(card2);
 todoColumn.addCard(card1);
 starter.addColumn(todoColumn);
